@@ -1,37 +1,53 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
 import Bottega from '../assets/Bottega (1).png';
-import cn from 'classnames'
-import proptype from 'prop-types'
-export const ResturentCard = ({ ImageUrl, Title, Desc, Ratings, bg, reviews }) => {
+
+export const ResturentCard = ({ ImageUrl, Title, Desc, Ratings, reviews }) => {
+    const roundedRating = Math.round(Ratings || 0); // Round the rating value
+
     return (
-        <div className="border w-[285px] rounded-xl pb-4  shadow-md bg-white font-robotoRegular ">
+        <div className="border w-[285px] rounded-xl pb-4 shadow-md bg-white font-robotoRegular">
             {/* Image */}
-            <img src={ImageUrl || Bottega} alt="Activity" className="w-full h-48 object-cover rounded-md mb-4" />
+            <img
+                src={ImageUrl || Bottega}
+                alt="Activity"
+                className="w-full h-48 object-cover rounded-md mb-4"
+            />
 
             {/* Title */}
-            <div className='ml-2' >
-                <h1 className="text-[19px] font-[600] mb-2 text-[#232323] ">{Title || "Bottega"}</h1>
+            <div className="ml-2">
+                <h1 className="text-[19px] font-[600] mb-2 text-[#232323]">
+                    {Title || 'Bottega'}
+                </h1>
 
                 {/* Description */}
-                <p className=" text-[14px] mb-4 text-[#8F8F8F] ">
-                    {Desc || "The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout."}
+                <p className="text-[14px] mb-4 text-[#8F8F8F]">
+                    {Desc ||
+                        'The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout.'}
                 </p>
 
                 {/* Rating Section */}
-                <div className='flex gap-1 items-center  ' >
+                <div className="flex gap-1 items-center">
                     {Array.from({ length: 5 }, (_, index) => (
-                        <div className={cn(`flex gap-1 bg-SolidGray w-6 text-white rounded-sm  `, bg)}>
-                            <span
-                                key={index}
-                                className={`material-symbols-outlined cursor-pointer 'text-yellow-400' : 'text-gray-300'
-                                                    }`}
-                            >
-                                star
-                            </span>
-                        </div>
+                        <span
+                            key={index}
+                            className={cn(
+                                'material-symbols-outlined text-[24px] cursor-pointer transition-all duration-200',
+                                {
+                                    'text-yellow-400': index < roundedRating, // Color for filled stars
+                                    'text-gray-300': index >= roundedRating, // Color for unfilled stars
+                                }
+                            )}
+                        >
+                            star
+                        </span>
                     ))}
-                    <div className='flex items-center ml-2   ' > <p className='font-[600] text-[14px] text-[#232323]' >{Ratings || '5.0'}</p>
-                        <span className=' text-[#8F8F8F] ' >{reviews || '(876 reviews)'}</span>
+                    <div className="flex items-center ml-2">
+                        <p className="font-[600] text-[14px] text-[#232323]">
+                            {Ratings?.toFixed(1) || '5.0'}
+                        </p>
+                        <span className="text-[#8F8F8F]">{reviews || '(876 reviews)'}</span>
                     </div>
                 </div>
             </div>
@@ -39,10 +55,17 @@ export const ResturentCard = ({ ImageUrl, Title, Desc, Ratings, bg, reviews }) =
     );
 };
 
+ResturentCard.propTypes = {
+    ImageUrl: PropTypes.string,
+    Title: PropTypes.string,
+    Desc: PropTypes.string,
+    Ratings: PropTypes.number,
+    reviews: PropTypes.string,
+};
 
-ResturentCard.proptype = {
-    Title: proptype.string,
-    Desc: proptype.string,
-    Ratings: proptype.number,
-    reviews: proptype.string
-}
+ResturentCard.defaultProps = {
+    Title: 'Bottega',
+    Desc: 'The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout.',
+    Ratings: 5.0,
+    reviews: '(876 reviews)',
+};
