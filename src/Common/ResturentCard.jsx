@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import Bottega from '../assets/Bottega (1).png';
 
-export const ResturentCard = ({ ImageUrl, Title, Desc, Ratings, reviews }) => {
+export const ResturentCard = ({ ImageUrl, Title, Desc, Ratings, reviews , className}) => {
     const roundedRating = Math.round(Ratings || 0); // Round the rating value
 
     return (
-        <div className="border w-[285px] rounded-xl pb-4 shadow-md bg-white font-robotoRegular">
+        <div className={cn(`border w-[285px] rounded-xl pb-4 shadow-md bg-white font-robotoRegular` , className )}>
             {/* Image */}
             <img
                 src={ImageUrl || Bottega}
