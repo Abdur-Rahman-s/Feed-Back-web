@@ -1,6 +1,5 @@
 
-import { MobileSerch } from "./Common/MobileSerch"
-import { ResturentCard } from "./Common/ResturentCard"
+import { HomePage } from "./components/HomePage"
 import { Navbar } from "./components/Navbar"
 
 
@@ -13,6 +12,7 @@ function App() {
       {/* <ResturentCard/> 
        */}
        <Navbar/>
+       <HomePage/>
        {/* <MobileSerch/> */}
     </>
   )
