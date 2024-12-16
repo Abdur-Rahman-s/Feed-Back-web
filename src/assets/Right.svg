@@ -1,0 +1,20 @@
+<svg width="83" height="83" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 3269">
+<g id="Ellipse 18" filter="url(#filter0_d_1_722)">
+<circle cx="41.5" cy="29.5" r="29.5" transform="rotate(-180 41.5 29.5)" fill="white" fill-opacity="0.6" shape-rendering="crispEdges"/>
+</g>
+<path id="Vector" d="M54.3465 27.5201L33.7494 27.3057L43.3087 17.9434L40.9302 15.532L27.2497 28.9307L40.6484 42.6112L43.0596 40.2497L33.7142 30.6906L54.3113 30.905L54.3465 27.5201Z" fill="#232323"/>
+</g>
+<defs>
+<filter id="filter0_d_1_722" x="0" y="0" width="83" height="83" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="12"/>
+<feGaussianBlur stdDeviation="6"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_722"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_722" result="shape"/>
+</filter>
+</defs>
+</svg>
