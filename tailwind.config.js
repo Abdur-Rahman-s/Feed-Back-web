@@ -54,6 +54,7 @@ export default {
 			},
 			fontFamily: {
 				robotoRegular: ["Roboto", "sans-serif"],
+				Lexend : ["Roboto", 'seri']
 			},
 			animation: {
 				fadeIn: 'fadeIn 0.5s ease-in-out',
