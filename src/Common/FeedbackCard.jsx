@@ -23,11 +23,11 @@ const FeedbackCard = ({
         >
             {/* Header */}
             <div className="flex items-center gap-2 mb-3">
-                
+
                 <div className="w-12 h-12  bg-w flex items-center justify-center rounded-full">
-                    <img src={Profile} alt=""  /> 
+                    <img src={Profile} alt="" />
                 </div>
-                
+
                 <div>
                     <h2 className="text-lg font-bold text-[#232323]">{userName}</h2>
                     <p className="text-sm text-[#8F8F8F]">{location}</p>
@@ -39,15 +39,12 @@ const FeedbackCard = ({
                 {Array.from({ length: 5 }, (_, index) => (
                     <span
                         key={index}
-                        className={cn(
-                            'material-symbols-outlined text-[20px] transition-all duration-200',
-                            {
-                                'text-yellow-400': index < roundedRating, // Filled star
-                                'text-gray-300': index >= roundedRating, // Unfilled star
-                            }
-                        )}
+                        className={cn("text-2xl", {
+                            "text-yellow-400": index < roundedRating,
+                            "text-gray-300": index >= roundedRating,
+                        })}
                     >
-                        star
+                        ★
                     </span>
                 ))}
                 <p className="text-sm text-[#8F8F8F] ml-2">{date}</p>
