@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ResturentCard } from "../Common/ResturentCard";
 import FeedbackCard from "../Common/FeedbackCard";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation  } from 'swiper/modules';
 
 
 // Importing all category images
@@ -44,11 +46,13 @@ import feedback6 from '../assets/Feedback (6).png'
 import feedback7 from '../assets/Feedback (7).png'
 import feedback8 from '../assets/Feedback (8).png'
 import { Footer } from "../Common/Footer";
+import { Resturent } from "./Resturent";
 
 
-export const HomePage = () => {
+export const HomePage = ({ SerchItem }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-
+    const swiperPrevRef = useRef(null);
+    const swiperNextRef = useRef(null);
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev === 0 ? cardComponent.length - 1 : prev - 1));
     };
@@ -82,24 +86,31 @@ export const HomePage = () => {
 
     const cardComponent = [
         [
-            <ResturentCard Ratings={4} reviews={'(243 reviews)'} />,
-            <ResturentCard Ratings={2} reviews={'(103 reviews)'} ImageUrl={slideImage2} />,
-            <ResturentCard Ratings={5} reviews={'(443 reviews)'} ImageUrl={slideImage3} />,
-            <ResturentCard Ratings={4.3} reviews={'(233 reviews)'} ImageUrl={slideImage4} />,
+            <ResturentCard Ratings={4} reviews={'(243 reviews)'} ImageUrlArray={[slideImage3, slideImage4, slideImage2, Trend10]} />,
+            <ResturentCard Ratings={2} reviews={'(103 reviews)'} ImageUrlArray={[slideImage2, slideImage3, slideImage4, Trend11]} />,
+            <ResturentCard Ratings={5} reviews={'(443 reviews)'} ImageUrlArray={[slideImage3, slideImage4, slideImage2, Trend10]} />,
+            <ResturentCard Ratings={4.3} reviews={'(233 reviews)'} ImageUrlArray={[slideImage4, slideImage2, slideImage3, Trend4]} />,
         ],
         [
-            <ResturentCard Ratings={2} ImageUrl={slideImage4} />,
-            <ResturentCard Ratings={3.1} ImageUrl={slideImage2} />,
-            <ResturentCard Ratings={5} />,
-            <ResturentCard Ratings={4} ImageUrl={slideImage3} />,
+            <ResturentCard Ratings={2} ImageUrlArray={[slideImage4, slideImage2, slideImage3, Trend4]} />,
+            <ResturentCard Ratings={3.1} ImageUrlArray={[slideImage2, slideImage3, slideImage4, Trend11]} />,
+            <ResturentCard Ratings={5} ImageUrlArray={[slideImage3, slideImage4, slideImage2, Trend10]} />,
+            <ResturentCard Ratings={4} ImageUrlArray={[slideImage3, slideImage4, slideImage2, Trend10]} />,
         ],
         [
-            <ResturentCard Ratings={3.1} ImageUrl={slideImage2} />,
-            <ResturentCard Ratings={4} ImageUrl={slideImage3} />,
-            <ResturentCard Ratings={2} ImageUrl={slideImage4} />,
-            <ResturentCard Ratings={5} />,
+            <ResturentCard Ratings={3.1} ImageUrlArray={[slideImage3, slideImage4, slideImage2, Trend10]} />,
+            <ResturentCard Ratings={4} ImageUrlArray={[slideImage4, slideImage2, slideImage3, Trend4]} />,
+            <ResturentCard Ratings={2} ImageUrlArray={[slideImage2, slideImage3, slideImage4, Trend11]} />,
+            <ResturentCard Ratings={5} ImageUrlArray={[slideImage3, slideImage4, slideImage2, Trend10]} />,
         ],
     ];
+
+    if (SerchItem) {
+        return (
+            <Resturent />
+        )
+    }
+
 
     return (
         <section className="category-section container mx-auto p-4 font-robotoRegular animate-fadeIn">
@@ -159,18 +170,18 @@ export const HomePage = () => {
                 </h1>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
-                    <ResturentCard Ratings={4.5} reviews={"(250 reviews)"} ImageUrl={Trend1} className="w-full " />
-                    <ResturentCard Ratings={4.7} reviews={"(300 reviews)"} ImageUrl={Trend2} className="w-full" />
-                    <ResturentCard Ratings={4.2} reviews={"(180 reviews)"} ImageUrl={Trend3} className="w-full" />
-                    <ResturentCard Ratings={4.6} reviews={"(220 reviews)"} ImageUrl={Trend4} className="w-full" />
-                    <ResturentCard Ratings={4.3} reviews={"(150 reviews)"} ImageUrl={Trend5} className="w-full" />
-                    <ResturentCard Ratings={4.8} reviews={"(400 reviews)"} ImageUrl={Trend6} className="w-full" />
-                    <ResturentCard Ratings={4.1} reviews={"(120 reviews)"} ImageUrl={Trend7} className="w-full" />
-                    <ResturentCard Ratings={4.4} reviews={"(200 reviews)"} ImageUrl={Trend8} className="w-full" />
-                    <ResturentCard Ratings={4.9} reviews={"(450 reviews)"} ImageUrl={Trend9} className="w-full" />
-                    <ResturentCard Ratings={4.0} reviews={"(100 reviews)"} ImageUrl={Trend10} className="w-full" />
-                    <ResturentCard Ratings={4.6} reviews={"(230 reviews)"} ImageUrl={Trend11} className="w-full" />
-                    <ResturentCard Ratings={4.3} reviews={"(190 reviews)"} ImageUrl={Trend12} className="w-full" />
+                    <ResturentCard Ratings={4.5} reviews={"(250 reviews)"} ImageUrlArray={[Trend1, Trend2, Trend3, Trend4]} className="w-full " />
+                    <ResturentCard Ratings={4.7} reviews={"(300 reviews)"} ImageUrlArray={[Trend7, Trend10, Trend4, Trend11]} className="w-full" />
+                    <ResturentCard Ratings={4.2} reviews={"(180 reviews)"} ImageUrlArray={[Trend6, Trend8, Trend9, Trend12]} className="w-full" />
+                    <ResturentCard Ratings={4.6} reviews={"(220 reviews)"} ImageUrlArray={[Trend4, Trend6, Trend10, Trend1]} className="w-full" />
+                    <ResturentCard Ratings={4.3} reviews={"(150 reviews)"} ImageUrlArray={[Trend4, Trend6, Trend10, Trend1]} className="w-full" />
+                    <ResturentCard Ratings={4.8} reviews={"(400 reviews)"} ImageUrlArray={[Trend4, Trend6, Trend10, Trend1]} className="w-full" />
+                    <ResturentCard Ratings={4.1} reviews={"(120 reviews)"} ImageUrlArray={[Trend4, Trend6, Trend10, Trend1]} className="w-full" />
+                    <ResturentCard Ratings={4.4} reviews={"(200 reviews)"} ImageUrlArray={[Trend4, Trend6, Trend10, Trend1]} className="w-full" />
+                    <ResturentCard Ratings={4.9} reviews={"(450 reviews)"} ImageUrlArray={[Trend4, Trend6, Trend10, Trend1]} className="w-full" />
+                    <ResturentCard Ratings={4.0} reviews={"(100 reviews)"} ImageUrlArray={[Trend6, Trend8, Trend9, Trend12]} className="w-full" />
+                    <ResturentCard Ratings={4.6} reviews={"(230 reviews)"} ImageUrlArray={[Trend4, Trend6, Trend10, Trend1]} className="w-full" />
+                    <ResturentCard Ratings={4.3} reviews={"(190 reviews)"} ImageUrlArray={[Trend1, Trend2, Trend3, Trend4]} className="w-full" />
                 </div>
                 <div className="text-center mt-[52px] font-Lexend  " >
                     <h2>Discover more cool restaurants</h2>
@@ -205,45 +216,103 @@ export const HomePage = () => {
                 />
             </section>
 
-            <section className="mt-[83px] overflow-hidden">
-                <h1 className="font-Lexend text-xl md:text-2xl font-bold mb-6 ml-8 ">
-                    Recent Activities
-                </h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8">
+            <section className="mt-[83px] overflow-hidden relative">
+            <h1 className="font-Lexend text-xl md:text-2xl font-bold mb-6 ml-8">
+                Recent Activities
+            </h1>
+
+            {/* Custom Left Arrow */}
+            <button
+                ref={swiperPrevRef}
+                className="absolute top-[50%] left-4 z-10  cursor-pointer rounded-full flex items-center justify-center"
+            >
+                <img src={leftSlide} alt="Previous" />
+            </button>
+
+            {/* Swiper Section */}
+            <Swiper
+                slidesPerView={1}
+                spaceBetween={16}
+                breakpoints={{
+                    640: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                    1280: { slidesPerView: 4 },
+                }}
+                navigation={{
+                    prevEl: swiperPrevRef.current,
+                    nextEl: swiperNextRef.current,
+                }}
+                onBeforeInit={(swiper) => {
+                    swiper.params.navigation.prevEl = swiperPrevRef.current;
+                    swiper.params.navigation.nextEl = swiperNextRef.current;
+                }}
+                modules={[Navigation]}
+                className="px-4 lg:px-8"
+            >
+                <SwiperSlide>
                     <FeedbackCard
                         userName="Leslie Sakho"
                         location="Canada, Toronto"
-                        description={`The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout.`}
+                        description="The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout."
                         images={[feedback1, feedback2, feedback3]}
                     />
-
+                </SwiperSlide>
+                <SwiperSlide>
                     <FeedbackCard
                         userName="Chris Macari"
                         location="Singapour"
                         date="14/09/2023"
-                        description={`The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout.`}
+                        description="The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout."
                         images={[feedback4, feedback5, feedback6]}
                     />
-
+                </SwiperSlide>
+                <SwiperSlide>
                     <FeedbackCard
                         userName="Jojo Alba"
                         location="Kuala Lumpur"
                         date="28/09/2023"
-                        description={`The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout.`}
+                        description="The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout."
                         images={[feedback7, feedback2, feedback8]}
                     />
-
+                </SwiperSlide>
+                <SwiperSlide>
                     <FeedbackCard
                         userName="Another User"
                         location="Berlin, Germany"
                         date="01/10/2023"
-                        description={`The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout.`}
+                        description="The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout."
                         images={[feedback1, feedback4, feedback6]}
                     />
-                </div>
-            </section>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <FeedbackCard
+                        userName="Another User"
+                        location="Berlin, Germany"
+                        date="01/10/2023"
+                        description="The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout."
+                        images={[feedback1, feedback4, feedback6]}
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <FeedbackCard
+                        userName="Another User"
+                        location="Berlin, Germany"
+                        date="01/10/2023"
+                        description="The lorem ipsum is, in printing, a series of meaningless words used temporarily to calibrate a layout."
+                        images={[feedback1, feedback4, feedback6]}
+                    />
+                </SwiperSlide>
+            </Swiper>
 
-           <Footer/>
+            {/* Custom Right Arrow */}
+            <button
+                ref={swiperNextRef}
+                className="absolute top-[50%] right-4 z-10  cursor-pointer rounded-full flex items-center justify-center"
+            >
+                <img src={rightSlide} alt="Next" />
+            </button>
+        </section>
+            <Footer />
         </section>
     );
 };
