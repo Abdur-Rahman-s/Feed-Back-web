@@ -21,7 +21,7 @@ export const ResturentCard = ({
     return (
         <div
             className={cn(
-                `border w-[285px] rounded-xl pb-4 shadow-md bg-white font-robotoRegular`,
+                `border w-[285px] hover:-translate-y-2 transition-all duration-300 rounded-xl pb-4 shadow-md bg-white font-robotoRegular`,
                 className
             )}
         >

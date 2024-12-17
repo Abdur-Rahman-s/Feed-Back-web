@@ -66,6 +66,10 @@ export default {
 				},
 			},
 
+			backgroundColor : {
+				menuColor : ['rgba(176, 194, 255, 0.13)']
+			}
+
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

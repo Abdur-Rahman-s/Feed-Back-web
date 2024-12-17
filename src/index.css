@@ -111,7 +111,8 @@
 
 
 body {
-  background-color: #FFFFFF
+  background-color: #FFFFFF;
+  overflow-x: hidden
 }
 
 @layer base {
@@ -121,4 +122,21 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* Swiper Navigation Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #FFFFFF !important; /* Change arrow color to gray */
+}
+
+/* Swiper Pagination Dots */
+.swiper-pagination-bullet {
+    background-color: #FFFFFF !important; /* Change pointer (dot) color to gray */
+}
+
+/* Active Pagination Dot */
+.swiper-pagination-bullet-active {
+    background-color: #FFFFFF !important; /* Slightly darker gray for the active dot */
 }
